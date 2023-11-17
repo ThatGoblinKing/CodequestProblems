@@ -20,11 +20,11 @@ for i in range(testCases):
     hangingChars = ''
     for i in range(len(encryptedMessage)):
         columnNumber = i%keywordLen
-        if i < (keywordLen * rowCount) or keyword[i%keywordLen] == alphabeticKeyword[i%keywordLen]:
+        if i < (keywordLen * rowCount):
             transposeTable[columnNumber].append(encryptedMessage[i])
         else:
             hangingChars += encryptedMessage[i]
-    hangingChars = hangingChars[::-1]
+    #hangingChars = hangingChars[::-1]
     for i in range(len(hangingChars)):
         transposeTable[alphabeticKeyword.find(keyword[i])].append(hangingChars[i])
     for i in  range(keywordLen):
@@ -70,4 +70,4 @@ for i in range(testCases):
                 y = X
             decyphered += table[x][y]
     finalOutput += decyphered
-print(finalOutput)
+    print(finalOutput)
