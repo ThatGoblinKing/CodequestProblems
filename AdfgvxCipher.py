@@ -29,12 +29,14 @@ for i in range(testCases):
         transposeTable[alphabeticKeyword.find(keyword[i])].append(hangingChars[i])
     for i in  range(keywordLen):
         alphabeticalTransposeTable[keyword.find(alphabeticKeyword[i])] = transposeTable[i]
+    addedChars = 0
     for i in range(rowCount + 1):
         for j in range(len(transposeTable)):
-            if j%2 == 0:
-                cypheredLetters+= "_"
             try:
                 cypheredLetters += alphabeticalTransposeTable[j][i]
+                if (addedChars + 1)%2 == 0 and cypheredLetters[-1] is not None:
+                 cypheredLetters+= "_"
+                addedChars += 1
             except:
                 pass
     letterPairs = cypheredLetters.split('_')
@@ -69,5 +71,5 @@ for i in range(testCases):
             else:
                 y = X
             decyphered += table[x][y]
-    finalOutput += decyphered
-    print(finalOutput)
+    print("\n\n\n" + decyphered + "\n\n\n")
+print(finalOutput)
