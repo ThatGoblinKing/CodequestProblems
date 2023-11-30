@@ -6,6 +6,7 @@ V = 4
 X = 5
 table = [[], [], [], [], [], []]
 testCases = int(input())
+finalOutput = ""
 for i in range(testCases):
     for i in range(6):
         table[i] = [*input()]
@@ -24,7 +25,7 @@ for i in range(testCases):
             transposeTable[columnNumber].append(encryptedMessage[i])
         else:
             hangingChars += encryptedMessage[i]
-    #hangingChars = hangingChars[::-1]
+
     for i in range(len(hangingChars)):
         transposeTable[alphabeticKeyword.find(keyword[i])].append(hangingChars[i])
     for i in  range(keywordLen):
@@ -41,7 +42,6 @@ for i in range(testCases):
                 pass
     letterPairs = cypheredLetters.split('_')
 
-    finalOutput = ""
     decyphered = ""
     for pair in letterPairs:
         if len(pair) == 2:
@@ -70,6 +70,6 @@ for i in range(testCases):
                 y = V
             else:
                 y = X
-            decyphered += table[x][y]
-    print("\n\n\n" + decyphered + "\n\n\n")
+            finalOutput += table[x][y]
+    finalOutput += "\n"
 print(finalOutput)
