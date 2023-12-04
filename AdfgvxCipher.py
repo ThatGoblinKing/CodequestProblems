@@ -15,8 +15,11 @@ for i in range(testCases):
     encryptedMessage = input()
     keywordLen = len(keyword)
     rowCount = int(len(encryptedMessage) / keywordLen)
-    transposeTable = [[], [], [], [], [], []]
-    alphabeticalTransposeTable = [[], [], [], [], [], []]
+    transposeTable = []
+    alphabeticalTransposeTable = []
+    for i in range(keywordLen):
+        transposeTable.append([])
+        alphabeticalTransposeTable.append([])
     cypheredLetters = ''
     hangingChars = ''
     for i in range(len(encryptedMessage)):
@@ -26,8 +29,10 @@ for i in range(testCases):
         else:
             hangingChars += encryptedMessage[i]
 
+    charColumns = ''.join(sorted(keyword[0:len(hangingChars)]))
+
     for i in range(len(hangingChars)):
-        transposeTable[alphabeticKeyword.find(keyword[i])].append(hangingChars[i])
+        transposeTable[alphabeticKeyword.find(charColumns[i])].append(hangingChars[i])
     for i in  range(keywordLen):
         alphabeticalTransposeTable[keyword.find(alphabeticKeyword[i])] = transposeTable[i]
     addedChars = 0
@@ -72,4 +77,5 @@ for i in range(testCases):
                 y = X
             finalOutput += table[x][y]
     finalOutput += "\n"
+finalOutput = finalOutput[:(len(finalOutput) - 1)]
 print(finalOutput)
