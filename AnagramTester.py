@@ -18,3 +18,5 @@ for word in words:
     else: result = "NOT AN ANAGRAM"
 
     print(f"{testedWords} = {result}", end = '\n')
+    
+ 
