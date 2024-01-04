@@ -1,24 +1,32 @@
-def checkSafety(skips, landsOn, startsOn, groupSize):
-    if (startsOn + landsOn + skips) % groupSize == 0:
-        return False
-    elif skips == 4:
-        return True
-    else:
-        return checkSafety(skips + 1, landsOn + 1 % groupSize, startsOn + 1 % groupSize + 1, groupSize)
-numberOfInputs = int(input())
-wordCounts = []
-groupCounts = []
-for i in range(numberOfInputs):
-    splitString = input().split(" ")
-    groupCounts.append(int(splitString[0]))
-    wordCounts.append(int(splitString[1]))
-for i in range(len(groupCounts)):
-    landingOn = (wordCounts[i] / groupCounts[i]) + wordCounts[i] % groupCounts[i]
-    for i in range(groupCounts[i]):
-        if checkSafety(0, landingOn, i, groupCounts[i]) == True:
-            safeStarter = i
-            break
-        else:
-            safeStarter = -1
-    print(safeStarter)
+numberOfWords = int(input())
+start = ""
+for i in range(numberOfWords):
+    tested = input()
+    groupSize, wordCount = tested.split(" ")
+    wordCount = int(wordCount)
+    groupSize = int(groupSize)
 
+    out = []
+    for i in range(groupSize):
+        out.append(False)
+    safe = False
+    startingNumber = 0
+    while not safe:
+        for i in range(groupSize):
+            out[i] = False
+        currentWord = 0
+        skips = 0
+        while skips < groupSize:
+            while currentWord < wordCount:
+                if out[0] == True:
+                    break
+                if not out[(currentWord+startingNumber+skips)%groupSize] == True:
+                    out[(currentWord+startingNumber+skips)%groupSize] = True
+                    currentWord += 1
+                else: 
+                    skips += 1
+        safe = not out[0]
+        startingNumber += 1
+    start += str(startingNumber) + "\n"
+
+print(start)
