@@ -1,21 +1,21 @@
 import math
+import sys
 
 def RoundHalfAway(num, decimalPoints):
-    decimal = 10.0**(-decimalPoints)
-    roundedNum = math.trunc(round(abs(num), decimalPoints + 1) / decimal) * decimal
-    remainder = abs(num - math.trunc(num))
-    if remainder >= decimal/10*5 and len(f"{remainder}") > decimalPoints + 1:
-        roundedNum += decimal
-    if roundedNum == -0.0 or num < 0:
-        roundedNum *= -1
+    decimal = 10.0**(-decimalPoints) #makes a decimal you can use to multiply/divide (IE decimalPoints = 2, decimal = 0.01 )
+    roundedNum = abs(int(num//decimal)) #puts digits you want to keep on the left side of the decimal (IE 1.394 = 139)
+    finalDigit = roundedNum%10 #Gets the ones place
+    if finalDigit >= 5:
+        roundedNum += (10 - finalDigit) #rounds number up to nearest 10
+    roundedNum *= decimal * (num/abs(num))#Multiplies Num back down to the right number of decimal points and makes it positive/negative
     return roundedNum
 
-numberOfInputs = int(input())
+numberOfInputs = int(sys.stdin.readline().rstrip())
 finalOutput = ""
 for i in range(numberOfInputs):
-    expenseCount = int(input())
-    budget = input().split(" ")
-    realExpenses = input().split(" ")
+    expenseCount = int(sys.stdin.readline().rstrip())
+    budget = sys.stdin.readline().rstrip().split(" ")
+    realExpenses = sys.stdin.readline().rstrip().split(" ")
     totalBudget = 0
     totalExpenses = 0
     costVariance = []
