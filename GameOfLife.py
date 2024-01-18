@@ -25,7 +25,7 @@ def checkSurroundings(startingLine, startingIndex, map):
 testCases = int(sys.stdin.readline().rstrip())
 
 #Setting variables
-finalOutput = "\n"
+finalOutput = ""
 
 for i in range(testCases):
     generations = int(sys.stdin.readline().rstrip())
@@ -47,5 +47,5 @@ for i in range(testCases):
                 lines[currentLine] = lines[currentLine][:currentIndex] + "1" + lines[currentLine][currentIndex + 1:] #Replaces the current character with a 1
             else:
                 lines[currentLine] = lines[currentLine][:currentIndex] + "0" + lines[currentLine][currentIndex + 1:] #Replaces the current character with a 0
-    finalOutput += "\n".join(lines) #Add the final generation to a string
+    finalOutput += "\n".join(lines) + "\n" #Add the final generation to a string
 print(finalOutput.strip()) #print output, remove excess whitespace
