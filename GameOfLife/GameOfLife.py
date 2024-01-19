@@ -1,8 +1,8 @@
-import sys
-
-def checkSurroundings(startingLine, startingIndex, map):
+def checkSurroundings(startingLine: int, startingIndex: int, map: list[str]):
 
     surroundings = 0
+    line = startingLine
+    index = startingIndex
 
     for i in range(9): #We're checking a 3 by 3 area, 3 x 3 = 9
         try:
@@ -22,15 +22,15 @@ def checkSurroundings(startingLine, startingIndex, map):
     return surroundings
 
 #Checking how many test cases we're doing
-testCases = int(sys.stdin.readline().rstrip())
+testCases = int(input().rstrip())
 
 #Setting variables
 finalOutput = ""
 
 for i in range(testCases):
-    generations = int(sys.stdin.readline().rstrip())
+    generations = int(input().rstrip())
     #finalOutput += f"{testCases}\n{generations}\n"  #you'll have to get rid of this when submitting.
-    lines = [sys.stdin.readline().rstrip() for j in range(10)]
+    lines = [input().rstrip() for j in range(10)]
     for j in range(generations):
         currentGen = lines[:]
         for k in range(100): #We're checking 10 lines of 10 characters each, therefore we're checking 100 characters
