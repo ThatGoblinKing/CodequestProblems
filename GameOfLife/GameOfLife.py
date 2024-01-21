@@ -25,7 +25,6 @@ def checkSurroundings(startingLine: int, startingIndex: int, map: list[str]):
 testCases = int(input().rstrip())
 
 #Setting variables
-finalOutput = ""
 
 for i in range(testCases):
     generations = int(input().rstrip())
@@ -41,11 +40,11 @@ for i in range(testCases):
             if surrounds >= 10: #The highest surrounds can be without being alive is 8 so this won't ever give a false positive
                 alive = True
                 surrounds -= 10
-            if alive and surrounds == 2:
+            if alive and surrounds == 2 or surrounds == 3:
                 pass
             elif surrounds == 3:
                 lines[currentLine] = lines[currentLine][:currentIndex] + "1" + lines[currentLine][currentIndex + 1:] #Replaces the current character with a 1
-            else:
+            else: #If it has less than 2 live neighbors, or more than 3 live neighbors it dies. If it is dead, it'll stay dead since it does not have exactly 3 living neighbors
                 lines[currentLine] = lines[currentLine][:currentIndex] + "0" + lines[currentLine][currentIndex + 1:] #Replaces the current character with a 0
-    finalOutput += "\n".join(lines) + "\n" #Add the final generation to a string
-print(finalOutput.strip()) #print output, remove excess whitespace
+    print("\n".join(lines).strip()) #Add the final generation to a string) += "\n".join(lines) + "\n" #Add the final generation to a string
+ #print output, remove excess whitespace
