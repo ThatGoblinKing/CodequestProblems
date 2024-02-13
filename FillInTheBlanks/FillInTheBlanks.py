@@ -1,13 +1,15 @@
-def replaceBracket(line, currentOutput = ""):
+def replaceBracket(line, currentOutput=""):
     if "[" and "]" not in line:
-        return currentOutput + line + "\n" #return everything that comes before it, the current line, and a new line to seperate it
+        # return everything that comes before it, the current line, and a new line to seperate it
+        return currentOutput + line + "\n"
     else:
-        firstBracket = line.index('[') 
+        firstBracket = line.index('[')
         secondBracket = line.index(']') + 1
 
         value = data[line[firstBracket + 1:secondBracket - 1]]
 
         return replaceBracket(line[secondBracket:], currentOutput + line[:firstBracket] + value)
+
 
 finalOutput = ""
 

@@ -1,5 +1,5 @@
-#https://lmcodequestacademy.com/api/static/problems/morse-code
-#Need to download .in so that I can format this god-forsaken input correctly :(
+# https://lmcodequestacademy.com/api/static/problems/morse-code
+# Need to download .in so that I can format this god-forsaken input correctly :(
 EXPECTED_OUTPUT = ". . . .   .   . - . .   . - . .   - - -       . - -   - - -   . - .   . - . .   - . .\nI LOVE CODE QUEST"
 
 
@@ -16,7 +16,7 @@ for _ in range(n_cases):
     alphabetToMorse[' '] = " "
     line1 = input().rstrip()
     line2 = input().rstrip()
-    
+
     for character in line1:
         finalOutput += f"{alphabetToMorse[character]}   "
     finalOutput = finalOutput.rstrip() + "\n"
