@@ -27,7 +27,6 @@ for case in range(testCases):
     if year % 4 == 0:
         monthLengths[1] = 29
 
-    if day < 1:
         month -= 1
         day = monthLengths[month - 1]
     elif day > monthLengths[month - 1]:
@@ -37,7 +36,8 @@ for case in range(testCases):
         month = 12
         year -= 1
     elif month > 12:
-        month = 1
-        year += 1
+        if day < 1:
+            month = 1
+            year += 1
     finalOutput += f"{month:0>2}/{day:0>2}/{year:0>4} {hour:0>2}:{minute:0>2}\n"
 print(finalOutput.rstrip())
