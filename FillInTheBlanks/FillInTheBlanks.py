@@ -1,4 +1,5 @@
 def replaceBracket(line, currentOutput=""):
+    
     if "[" and "]" not in line:
         # return everything that comes before it, the current line, and a new line to seperate it
         return currentOutput + line + "\n"

@@ -5,7 +5,7 @@ for _ in range(n_cases):
     toEncode = input().rstrip()
     keyword = input().rstrip()
 
-    alphabets = []
+    alphabets : list[str] = []
 
     for character in keyword:
         currentCodeCharacter = ALPHABET.index(character)
