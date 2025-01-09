@@ -52,4 +52,3 @@ for _ in range(cases):
     finalOutput += flower + currentRow.rstrip() + "\n"
 
 print(finalOutput)
-print(finalOutput == EXPECTED_OUTPUT)
