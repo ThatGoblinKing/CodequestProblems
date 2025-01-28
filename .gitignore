@@ -6,3 +6,11 @@ __pycache__/
 *.bat
 
 template.py
+
+*.zip
+
+*.xml
+
+*.iml
+
+.idea/
