@@ -1,7 +1,8 @@
 #https://lmcodequestacademy.com/problem/halves-and-doubles
 from typing import Union
 from contextlib import redirect_stdout
-import io
+from io import StringIO
+
 
 OUTPUT = """10 20 ***
 5 40
@@ -38,7 +39,7 @@ def halfAndDoubleMult(num1: Union[float, int], num2: int) -> int:
         return int(num2) + halfAndDoubleMult(num1/2, num2*2)
 
 
-f = io.StringIO()
+f = StringIO()
 with redirect_stdout(f):
     cases = int(input())
     for _ in range(cases):
