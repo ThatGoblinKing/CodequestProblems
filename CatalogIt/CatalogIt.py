@@ -1,8 +1,17 @@
 n_cases = int(input())
 products = {}
 finalOutput = ""
-EXPECTED_OUTPUT = "All Products\n-Aeronautic Products\n--Fighter Planes\n---F-22 Raptor\n---F-35 Lightning 2\n-Space Products\n--Manned Spacecraft\n---Orion\n--Satellites\n---A2100\n---GPS"
-
+EXPECTED_OUTPUT = """All Products
+-Aeronautic Products
+--Fighter Planes
+---F-22 Raptor
+---F-35 Lightning 2
+-Space Products
+--Manned Spacecraft
+---Orion
+--Satellites
+---A2100
+---GPS"""
 
 
 def format(products, layerName="None", layerNum=0, currentLayers=""):

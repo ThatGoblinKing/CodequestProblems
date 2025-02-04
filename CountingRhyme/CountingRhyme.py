@@ -1,35 +1,23 @@
-numberOfWords = int(input())
-start = ""
-for i in range(numberOfWords):
-    tested = input()
-    groupSize, wordCount = tested.split(" ")
-    wordCount = int(wordCount) - 1
-    groupSize = int(groupSize)
+from typing import List
 
-    group = []
-    for i in range(groupSize):
-        group.append(i)
-    groupTemplate = group
-    safe = False
-    startingNumber = 0
-    currentMember = 0
-    while not safe:
-        print(startingNumber)
-        group = groupTemplate
-        if startingNumber > groupSize - 1:
-            print("Something BAD happened :(")
-            safe = True
-            continue
-        currentMember = 0 + startingNumber
-        while len(group) > 1:
-            '''if 0 not in group:
-                break'''
-            group.pop((currentMember+wordCount)%len(group))
-            currentMember = (currentMember+wordCount)
-        if group[0] == 0:
-            safe = True
-        else:
-            startingNumber += 1
-    start += str(startingNumber) + "\n"
+def is_valid_start(people : List[int], word_count: int, starting_num: int) -> bool:
+    working_group = people.copy()
+    if len(working_group) <= 1 or 0 not in working_group:
+        return 0 in working_group
 
-print(start)
+    end_person = (starting_num + (word_count - 1)) % len(working_group)
+    working_group.pop(end_person)
+
+    return is_valid_start(working_group, word_count, end_person % len(working_group))
+
+n_cases = int(input())
+
+for _ in range(n_cases):
+    line = input().rstrip()
+
+    group_len, words = (int(val) for val in line.split(" "))
+    group = [i for i in range(group_len)]
+    for i in range(group_len):
+        if is_valid_start(group, words, i):
+            print(i+1)
+            break
