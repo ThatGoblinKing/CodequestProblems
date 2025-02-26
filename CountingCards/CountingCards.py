@@ -46,11 +46,13 @@ for case in range(testCases):
 
     busted = [playerScore > 21, dealerScore > 21]
     
-    if playerScore == 21 and not dealerScore == 21:
+    if playerScore == 21 and not dealerScore == 21: #score greater than dealer 
         winner = PLAYER
     elif busted[DEALER] and not busted[PLAYER]:
         winner = PLAYER
     elif busted[PLAYER]:
+        winner = DEALER
+    elif busted[PLAYER] and busted[DEALER]:
         winner = DEALER
     elif playerScore == dealerScore:
         winner = TIE

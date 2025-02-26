@@ -1,4 +1,10 @@
-n_cases = int(input())
+from sys import stdin
+from contextlib import redirect_stdout
+from io import StringIO
+import string
+
+
+n_cases = int(stdin.readline()) #Takes users input 
 finalOutput = ""
 
 EXPECTED_OUTPUT = "Charlie-Oscar-Delta-Echo Quebec-Uniform-Echo-Sierra-Tango\nRomeo-Oscar-Charlie-Kilo-Sierra\nLima-Oscar-Charlie-Kilo-Hotel-Echo-Echo-Delta"
@@ -30,15 +36,19 @@ icao = {'A': 'Alpha',
         'Y': 'Yankee',
         'Z': 'Zulu'}
 
-for _ in range(n_cases):
-    lines = int(input().rstrip())
-    for i in range(lines):
-        line = input().upper().rstrip()
-        output = ""
-        for char in line:
-            if not char == " ":
-                output += icao[char] + "-"
-            else:
-                output = output[:-1] + " "
-        finalOutput += output[:-1] + '\n'
-print(finalOutput.rstrip())
+f = StringIO()
+with redirect_stdout(f):
+    for _ in range(n_cases):
+        sub_cases = int(stdin.readline().rstrip())
+        for i in range(sub_cases):
+            output = ""
+            line = stdin.readline().upper().rstrip()
+            for char in line:
+                if char != " ":
+                    output += icao[char] + "-"
+                else:
+                    output = output[:-1] + " "
+            print(output[:-1].strip())
+s = f.getvalue()
+print(s.strip())
+print(s == EXPECTED_OUTPUT)
